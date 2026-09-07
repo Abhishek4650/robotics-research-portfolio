@@ -1,0 +1,204 @@
+<?xml version="1.0"?>
+<!-- ARM-450 — geometry and inertia EXTRACTED from the CAD.
+     Meshes are the exported solids; inertias are computed from them. -->
+<robot name="arm450">
+  <material name="shell"><color rgba="0.66 0.71 0.77 1"/></material>
+  <material name="tool"><color rgba="0.30 0.32 0.36 1"/></material>
+  <link name="world"/>
+  <joint name="world_to_base" type="fixed">
+    <parent link="world"/><child link="base_link"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+  </joint>
+  <link name="base_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.12765"/>
+      <inertia ixx="0.000134186" ixy="-0.000000000" ixz="-0.000000000"
+               iyy="0.000134186" iyz="-0.000000000" izz="0.000130113"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry><mesh filename="package://arm450_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/></geometry>
+      <material name="shell"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry><mesh filename="package://arm450_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/></geometry>
+    </collision>
+  </link>
+  <joint name="joint1" type="revolute">
+    <parent link="base_link"/><child link="link1"/>
+    <origin rpy="0 0 0" xyz="0 0 0.050000"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="2.94" velocity="4.6"
+           lower="-2.879793" upper="2.879793"/>
+  </joint>
+  <link name="link1">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.22068"/>
+      <inertia ixx="0.000155012" ixy="0.000003660" ixz="0.000000910"
+               iyy="0.000176252" iyz="0.000000478" izz="0.000117273"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry><mesh filename="package://arm450_description/meshes/link1.stl" scale="0.001 0.001 0.001"/></geometry>
+      <material name="shell"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry><mesh filename="package://arm450_description/meshes/link1.stl" scale="0.001 0.001 0.001"/></geometry>
+    </collision>
+  </link>
+  <joint name="joint2" type="revolute">
+    <parent link="link1"/><child link="link2"/>
+    <origin rpy="0 0 0" xyz="0 0 0.040000"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="4.9" velocity="3.7"
+           lower="-2.007129" upper="2.007129"/>
+  </joint>
+  <link name="link2">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.26882"/>
+      <inertia ixx="0.000077159" ixy="0.000005250" ixz="0.000000826"
+               iyy="0.000018950" iyz="-0.000005689" izz="0.000085176"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry><mesh filename="package://arm450_description/meshes/link2.stl" scale="0.001 0.001 0.001"/></geometry>
+      <material name="shell"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry><mesh filename="package://arm450_description/meshes/link2.stl" scale="0.001 0.001 0.001"/></geometry>
+    </collision>
+  </link>
+  <joint name="joint3" type="revolute">
+    <parent link="link2"/><child link="link3"/>
+    <origin rpy="0 0 0" xyz="0 0 0.119000"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="2.94" velocity="4.6"
+           lower="-2.617994" upper="2.617994"/>
+  </joint>
+  <link name="link3">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.26882"/>
+      <inertia ixx="0.000077159" ixy="0.000005250" ixz="0.000000826"
+               iyy="0.000018950" iyz="-0.000005689" izz="0.000085176"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry><mesh filename="package://arm450_description/meshes/link3.stl" scale="0.001 0.001 0.001"/></geometry>
+      <material name="shell"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry><mesh filename="package://arm450_description/meshes/link3.stl" scale="0.001 0.001 0.001"/></geometry>
+    </collision>
+  </link>
+  <joint name="joint4" type="revolute">
+    <parent link="link3"/><child link="link4"/>
+    <origin rpy="0 0 0" xyz="0 0 0.119000"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="2.94" velocity="4.6"
+           lower="-2.879793" upper="2.879793"/>
+  </joint>
+  <link name="link4">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.16363"/>
+      <inertia ixx="0.000224756" ixy="0.000008480" ixz="-0.000011319"
+               iyy="0.000241245" iyz="0.000034740" izz="0.000057734"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry><mesh filename="package://arm450_description/meshes/link4.stl" scale="0.001 0.001 0.001"/></geometry>
+      <material name="shell"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry><mesh filename="package://arm450_description/meshes/link4.stl" scale="0.001 0.001 0.001"/></geometry>
+    </collision>
+  </link>
+  <joint name="joint5" type="revolute">
+    <parent link="link4"/><child link="link5"/>
+    <origin rpy="0 0 0" xyz="0 0 0.062000"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="2.94" velocity="4.6"
+           lower="-1.588250" upper="0.855211"/>
+  </joint>
+  <link name="link5">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.15644"/>
+      <inertia ixx="0.000081934" ixy="-0.000002903" ixz="0.000002032"
+               iyy="0.000087442" iyz="-0.000001817" izz="0.000053080"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry><mesh filename="package://arm450_description/meshes/link5.stl" scale="0.001 0.001 0.001"/></geometry>
+      <material name="shell"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry><mesh filename="package://arm450_description/meshes/link5.stl" scale="0.001 0.001 0.001"/></geometry>
+    </collision>
+  </link>
+  <joint name="joint6" type="revolute">
+    <parent link="link5"/><child link="link6"/>
+    <origin rpy="0 0 0" xyz="0 0 0.030000"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="2.94" velocity="4.6"
+           lower="-3.054326" upper="3.054326"/>
+  </joint>
+  <link name="link6">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.15870"/>
+      <inertia ixx="0.000046257" ixy="0.000008393" ixz="-0.000004884"
+               iyy="0.000062384" iyz="0.000011363" izz="0.000050543"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry><mesh filename="package://arm450_description/meshes/link6.stl" scale="0.001 0.001 0.001"/></geometry>
+      <material name="shell"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry><mesh filename="package://arm450_description/meshes/link6.stl" scale="0.001 0.001 0.001"/></geometry>
+    </collision>
+  </link>
+  <joint name="link6_to_tcp" type="fixed">
+    <parent link="link6"/><child link="tcp"/>
+    <origin rpy="0 0 0" xyz="0 0 0.030000"/>
+  </joint>
+  <link name="tcp"/>
+  <joint name="link6_to_tool" type="fixed">
+    <parent link="link6"/><child link="tool"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+  </joint>
+  <link name="tool">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.07460"/>
+      <inertia ixx="0.000025006" ixy="-0.000000009" ixz="-0.000000024"
+               iyy="0.000024984" iyz="-0.000000066" izz="0.000003925"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry><mesh filename="package://arm450_description/meshes/tool_gripper.stl" scale="0.001 0.001 0.001"/></geometry>
+      <material name="tool"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry><mesh filename="package://arm450_description/meshes/tool_gripper.stl" scale="0.001 0.001 0.001"/></geometry>
+    </collision>
+  </link>
+  <joint name="tool_to_tip" type="fixed">
+    <parent link="tool"/><child link="tool_tip"/>
+    <origin rpy="0 0 0" xyz="0 0 0.072000"/>
+  </joint>
+  <link name="tool_tip"/>
+</robot>

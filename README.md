@@ -92,6 +92,11 @@ Predictions are recorded **before** hardware exists, with `[AWAITING HARDWARE]` 
 measurements will go: a prediction recorded before the test is evidence; one recorded after
 it is not.
 
+The design is realised in ROS 2 as well as on paper:
+[`ros2/arm450_description`](2-arm450-design-study/ros2/arm450_description) carries the
+generated URDF and meshes, so the workspace and trajectory claims above can be re-run against
+the same model rather than taken on trust.
+
 → [`2-arm450-design-study/`](2-arm450-design-study) ·
 [paper draft](2-arm450-design-study/PAPER.md) ·
 [kinematics](2-arm450-design-study/KINEMATICS.md) ·
