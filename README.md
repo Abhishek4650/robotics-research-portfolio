@@ -6,6 +6,9 @@ A connected line of work on 6-DOF manipulators, running from verified analytical
 through a workspace-theoretic study of orientation-constrained tasks, to a clean-sheet arm
 designed against that theory.
 
+**Junior Research Fellow, Space Dynamics and Flight Control Laboratory (SDFCL), Department of
+Aerospace Engineering, IIT Kanpur.**
+
 *Prepared for research applications. Everything here is reproducible: each result is produced
 by a script in the same folder, and every figure regenerates from source.*
 
@@ -142,7 +145,7 @@ figures and tables from scratch.
 
 Further work in free-floating capture dynamics — manipulation from a platform that is not
 bolted down, where arm motion reacts on its own base and momentum is conserved — is part of
-a team project and is not published here. I am happy to discuss it directly.
+a team project at SDFCL and is not published here. I am happy to discuss it directly.
 
 ---
 
