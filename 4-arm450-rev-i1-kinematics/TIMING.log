@@ -1,0 +1,21 @@
+TIMED TRAJECTORIES + ENCODER RESOLUTION
+
+ST3215 (Waveshare wiki): 0.222 s/60 deg at 12 V = 270 deg/s no-load; 4096 counts/rev = 0.0879 deg/count
+
+VERTICAL sine (board x = 350): path 345 mm
+  resolved rate (5-D task, roll free, null space to the joint centres): error 9.3e-11 mm, pen axis 9.2e-13; inside the limits: True
+  largest joint rate per mm of pen travel 1.65 deg/mm (joint 3); closed-form path of step 7: largest step 2.82 deg
+  pen speed at which a servo reaches its no-load rating: 164 mm/s; at half the rating: 82 mm/s
+  one pass of the sine at half the rating: 4.2 s
+  encoder floor (every joint off by half a count): tool face 0.87 .. 0.93 mm along the path
+
+TABLE sine (table z = 25, pen tilt 30 deg): path 318 mm
+  resolved rate (5-D task, roll free, null space to the joint centres): error 1.8e-13 mm, pen axis 5.0e-16; inside the limits: True
+  largest joint rate per mm of pen travel 0.33 deg/mm (joint 3); closed-form path of step 7: largest step 0.74 deg
+  pen speed at which a servo reaches its no-load rating: 822 mm/s; at half the rating: 411 mm/s
+  one pass of the sine at half the rating: 0.8 s
+  encoder floor (every joint off by half a count): tool face 0.84 .. 0.88 mm along the path
+
+-> drawing faster than about half the no-load pen speed above leaves the servos no margin (the rating is
+   no-load; under the arm's own weight they are slower). The encoder alone limits a drawn line to about
+   the floor above -- a real line is also limited by gear backlash and the printed parts' play.

@@ -1,0 +1,16 @@
+SINE TRACING (closed-form IK, continuity = nearest valid branch)
+
+VERTICAL: board x = 350, pen normal +x (away from the robot)
+  sine: centre (350, 0, 260) mm, width 200 mm, amplitude 33 mm, 2 cycles, 150 points
+  closed form: FK error max 1.3e-13 mm, pen axis error 2.6e-16; all points inside the joint limits: True
+  motion: largest joint step between points 2.82 deg; smallest margin to a limit 2.5 deg (pen roll free)
+  DLS re-trace (seed = previous point): max error 7.9e-07 mm, mean 8.0 iterations
+  ikpy re-trace (URDF): max error 9.3e-05 mm
+
+TABLE: table z = 25, pen tilted 30 deg from straight down, leaning out along the radius
+  sine along an arc of radius 340 mm (the drawable ring), arc length 300 mm, radial amplitude 12 mm, 2 cycles, 150 points
+  closed form: FK error max 1.3e-13 mm, pen axis error 2.9e-16; all points inside the joint limits: True
+  motion: largest joint step between points 0.74 deg; smallest margin to a limit 1.0 deg (pen roll free)
+  DLS re-trace (seed = previous point): max error 6.2e-07 mm, mean 4.4 iterations
+  ikpy re-trace (URDF): max error 1.9e-06 mm
+

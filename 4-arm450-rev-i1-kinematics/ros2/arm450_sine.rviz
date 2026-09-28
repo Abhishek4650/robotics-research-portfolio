@@ -1,0 +1,47 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Class: rviz_default_plugins/Grid
+      Name: Grid
+      Enabled: true
+      Cell Size: 0.05
+      Plane Cell Count: 20
+    - Class: rviz_default_plugins/RobotModel
+      Name: RobotModel
+      Enabled: true
+      Description Topic:
+        Value: /robot_description
+    - Class: rviz_default_plugins/TF
+      Name: TF
+      Enabled: false
+    - Class: rviz_default_plugins/Path
+      Name: target
+      Enabled: true
+      Topic:
+        Value: /target_sine_path
+      Color: 120; 120; 120
+      Line Style: Lines
+    - Class: rviz_default_plugins/Path
+      Name: drawn
+      Enabled: true
+      Topic:
+        Value: /drawn_path
+      Color: 220; 30; 30
+      Line Style: Billboards
+      Line Width: 0.004
+  Global Options:
+    Fixed Frame: ground
+    Background Color: 245; 245; 245
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Distance: 1.4
+      Focal Point:
+        X: 0.15
+        Y: 0
+        Z: 0.25
+      Pitch: 0.35
+      Yaw: -0.9

@@ -1,0 +1,21 @@
+WORKSPACE
+
+self-checks: batch FK vs model FK 0.0e+00 mm; pen feasibility batch vs full IK (roll swept 5 deg) agree on 100.0 % of 400 pens (200 held by real poses + 200 random; 201 vs 201 feasible)
+
+REACHABLE (tool-flange face, 400000 random poses inside the joint limits)
+  horizontal reach from the J1 axis: max 405.5 mm
+  distance from the shoulder (0, 0, 90): max 428.5 mm  (a2 + d4 + d_T = 428.5)
+  height: -49.5 .. 518.4 mm; below the table top (z < -69.9): 0.0 % of poses
+  volume above the table (occupied 10 mm voxels): 74.59 litres
+  wrist centre: r max 317.6 mm, z 30.5 .. 430.4 mm
+
+TASK-CONSTRAINED (drawable) -- share of the reachable cells where the tool can stand normal to the surface
+  NOTE: straight down needs 180 deg of pitch; J2 + J3 + J5 give at most 54 + 72 + 46.5 = 172.5 deg
+  horizontal z =  -40.0  pen straight down:   0.0 % of   845 reachable cells; least tilt that works 15 deg; <= 30 deg on 94.2 %, <= 45 deg on 94.2 %
+  horizontal z =   50.0  pen straight down:   0.0 % of  2211 reachable cells; least tilt that works 30 deg; <= 30 deg on 24.6 %, <= 45 deg on 74.0 %
+  horizontal z =  150.0  pen straight down:   0.0 % of  3033 reachable cells; least tilt that works 50 deg; <= 30 deg on 0.0 %, <= 45 deg on 0.0 %
+  horizontal z =  250.0  pen straight down:   0.0 % of  3562 reachable cells; least tilt that works 75 deg; <= 30 deg on 0.0 %, <= 45 deg on 0.0 %
+  horizontal z =  350.0  pen straight down:   0.0 % of  3787 reachable cells; least tilt that works 90 deg; <= 30 deg on 0.0 %, <= 45 deg on 0.0 %
+  vertical   x =  150.0  pen +x (front):   0.0 %, pen -x (back):   0.0 % of   2030 reachable cells
+  vertical   x =  250.0  pen +x (front):   9.7 %, pen -x (back):   0.0 % of   2093 reachable cells
+  vertical   x =  350.0  pen +x (front):  46.0 %, pen -x (back):   0.0 % of   1780 reachable cells

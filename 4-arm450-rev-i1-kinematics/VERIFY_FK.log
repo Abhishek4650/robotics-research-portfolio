@@ -1,0 +1,8 @@
+FORWARD KINEMATICS + JACOBIAN VERIFICATION (2000 random poses inside the joint limits; Jacobian 500)
+
+  DH FK vs CAD (product of exponentials), position             max 2.98e-13 mm
+  DH FK vs CAD, orientation                                    max 1.49e-15 rad
+  DH FK vs URDF (ikpy 3.4.2), position                         max 2.55e-13 mm
+  DH FK vs URDF, orientation                                   max 8.69e-16 rad
+  velocity-propagation J vs z_i x (p_e - p_i)                  max 2.27e-13 mm/rad
+  velocity-propagation J vs central differences (relative)     max 2.91e-10 -

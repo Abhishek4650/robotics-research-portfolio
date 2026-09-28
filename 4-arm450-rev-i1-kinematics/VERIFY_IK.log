@@ -1,0 +1,16 @@
+INVERSE KINEMATICS VERIFICATION
+
+(a) closed form, 5000 random poses inside the joint limits
+    worst FK(branch) - target, all 8 branches:   2.70e-13 mm
+    poses whose original configuration was NOT among the valid branches: 0
+    valid branches per pose (joint limits): mean 1.37, min 1, max 2; histogram [0, 3161, 1839]
+
+(b) 200 of the poses, full pose (position + orientation), joint limits enforced
+    LOCAL -- seed = the true solution moved 3 deg per joint (what a traced path gives):
+      damped least squares (Rsine method): 190 / 200 converged to 1e-6 mm, 190 of them on a closed-form branch
+      ikpy on the URDF (cross-check):      200 / 200 within 0.01 mm + 1e-3 rad, median error 4.2e-07 mm
+    GLOBAL -- seed = the fixed ready pose q = (0, 30, -60, 0, 30, 0) deg, target anywhere:
+      damped least squares:                 78 / 200 (78 on a closed-form branch)
+      ikpy:                                125 / 200, median error 3.48e-06 mm
+    -> numerical solvers are LOCAL: exact near a seed, unreliable across the workspace; the closed
+       form has no seed and returns every branch -- use it, and the numerical ones along paths.

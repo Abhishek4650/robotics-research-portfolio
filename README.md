@@ -68,6 +68,9 @@ a *dexterity* limit, and it is invisible to a reachable-workspace analysis.
 
 ## 2 · ARM-450: designing a manipulator against the constrained workspace
 
+*The first design iteration. Its successor, rev I.1, the version sent to the printer, is
+analysed in [§4](#4--arm-450-rev-i1-the-drawable-workspace-of-the-as-designed-arm).*
+
 A 6-DOF arm designed from a clean sheet, where the *contribution is the verification method*
 rather than the arm: an eight-stage gate in which every criterion is recomputed **from the
 exported CAD geometry** rather than from the parameters used to author it, with the full load
@@ -126,6 +129,53 @@ before use:
 
 ---
 
+## 4 · ARM-450 rev I.1: the drawable workspace of the as-designed arm
+
+<p align="center">
+<img src="4-arm450-rev-i1-kinematics/figures/sine_vertical.gif" width="380" alt="Rev I.1 tracing on a vertical board">
+<img src="4-arm450-rev-i1-kinematics/figures/sine_table.gif" width="380" alt="Rev I.1 tracing on a table">
+</p>
+
+The §1 analysis is repeated on the arm as released for printing, with one change of
+discipline: **the kinematic model is derived from the CAD, not from a specification.**
+
+**Method.**
+
+1. The six servo axes are measured on the exported geometry.
+2. Modified-DH frames are built on those axes by fixed rules, and the DH table is read back
+   from the frames.
+3. FK is checked against two independent models:
+   - the CAD moved by its own screw axes (product of exponentials; the DH table is never read);
+   - the URDF, through `ikpy`.
+4. The spherical wrist gives a closed-form Pieper IK with all 8 branches. It is benchmarked
+   against DLS, pseudoinverse, Jacobian-transpose, Levenberg–Marquardt and `ikpy`.
+
+**Results.**
+
+| Finding | Result |
+| --- | --- |
+| Model fidelity | FK = CAD to 3.0e-13 mm and = URDF to 2.6e-13 mm over 2000 poses; velocity-propagation Jacobian = geometric form to 2e-13 |
+| Closed form vs iterative IK | Closed form: 100 % of 500 poses, 0.18 ms, no seed. Iterative solvers reach 95–99.8 % from a seed 3° away, but only 18–48 % from the ready pose. They are local methods, suited to tracking a path the closed form has seeded. |
+| **Drawable workspace** | **The tool can never point straight down.** The pitch joints J2 + J3 + J5 give at most 54 + 72 + 46.5 = 172.5°. At every table height, 0 % of reachable cells allow a vertical pen. The least workable tilt grows with height, from 15° low down to 90° at z = 350 mm. |
+| Vertical board | Only the outward-facing tool works: 0 % at x = 150 mm, 9.7 % at 250 mm, 46 % at 350 mm |
+| Singularities | The straight-up home pose is singular three ways (shoulder, elbow, wrist); work starts from a bent ready pose |
+| Redundancy in use | A pen is symmetric, so the task is 5-D on a 6-joint arm. Using the free roll in the null space keeps the traced motion smooth through the wrist singularity (largest step < 3°). |
+| Timing on the actuators | On a vertical board at half the servo rating, the pen moves at ~82 mm/s. Encoder resolution alone bounds accuracy at ~0.9 mm. |
+
+The §1 point holds in a sharper form. The reachable workspace (405 mm reach, 75 L above the
+table) says nothing about the fact that a tool normal to a table is infeasible everywhere.
+**On this arm the joint limits, not the link lengths, decide the task workspace.** A
+design-time task-workspace check would have caught this before the geometry was frozen.
+
+→ [`4-arm450-rev-i1-kinematics/`](4-arm450-rev-i1-kinematics) ·
+[report (PDF)](4-arm450-rev-i1-kinematics/docs/ARM450_KINEMATICS.pdf) ·
+[DH table](4-arm450-rev-i1-kinematics/DH_TABLE.md) ·
+[analysis scripts](4-arm450-rev-i1-kinematics/analysis) ·
+the mechanical release (print files, CAD, verification logs) is in the
+[engineering portfolio](https://github.com/Abhishek4650/robotics-engineering-portfolio/tree/main/6-arm450-rev-i1)
+
+---
+
 ## Methods, tools and reproducibility
 
 | | |
@@ -143,9 +193,10 @@ figures and tables from scratch.
 
 ## Also ongoing
 
-Further work in free-floating capture dynamics — manipulation from a platform that is not
-bolted down, where arm motion reacts on its own base and momentum is conserved — is part of
-a team project at SDFCL and is not published here. I am happy to discuss it directly.
+I am a member of the **MASCOT** team at SDFCL. The team works on free-floating capture
+dynamics: manipulation from a platform that is not bolted down, where arm motion reacts on
+its own base and momentum is conserved. This is team work, so its specifications and
+results are not published here. I am happy to discuss my part in it directly.
 
 ---
 

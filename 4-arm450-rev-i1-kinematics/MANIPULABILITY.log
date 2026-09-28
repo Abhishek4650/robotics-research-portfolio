@@ -1,0 +1,15 @@
+MANIPULABILITY + SINGULARITIES
+
+arm manipulability  |det J_W| = a2 d4 |sin phi3| r : closed form vs velocity propagation, max rel. diff 2.0e-13
+
+over 150000 random poses inside the joint limits (tool face, J_v):
+  manipulability w: median 4.68e+06, max 1.52e+07 mm^3/rad^3
+  condition number kappa: median 10.2, 95th percentile 34.5
+  6-D min singular value (100 mm scaling) < 5 % of its median: 3.6 % of poses
+
+SINGULARITIES (arm straight up at home is all three at once):
+  wrist    theta5 = 0        J4 and J6 in line -- rank loss 1 (home, and anywhere q5 = 0)
+  elbow    phi3 = 0 or 180   upper arm and forearm in line -- W on the reach sphere (home)
+  shoulder r = 0             W on the J1 axis -- J1 moves nothing (home)
+  rank of J: home 3, ready pose 6; smallest singular value home 3.03e-31, ready 27.2 (100 mm scaling)
+  -> start and work from a bent pose (the manual's ready pose q = 0, 30, -60, 0, 30, 0 deg).

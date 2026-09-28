@@ -1,0 +1,18 @@
+IK SOLVER COMPARISON -- 500 random reachable full poses, joint limits enforced
+
+solver                 seed     success  mean iter    mean ms  median err mm
+Closed form            GLOBAL    100.0%        1.0       0.18       5.68e-14
+Closed form            LOCAL     100.0%        1.0       0.18       5.68e-14
+Damped least squares   GLOBAL     29.2%      221.6      34.89       3.12e+01
+Damped least squares   LOCAL      95.2%       34.6       5.43       2.59e-07
+Pseudoinverse          GLOBAL     30.4%      212.9      36.40       4.62e+01
+Pseudoinverse          LOCAL      98.8%        8.7       1.42       1.09e-09
+Jacobian transpose     GLOBAL     18.0%     2831.4     430.78       2.52e-01
+Jacobian transpose     LOCAL      31.0%     2650.4     402.98       4.81e-04
+Levenberg-Marquardt    GLOBAL     47.6%      165.5      27.15       9.10e-01
+Levenberg-Marquardt    LOCAL      99.8%        8.6       1.35       5.89e-08
+ikpy (URDF)            GLOBAL     63.4%          -       4.46       7.08e-06
+ikpy (URDF)            LOCAL     100.0%          -       1.97       4.52e-07
+
+GLOBAL = seed at the ready pose, LOCAL = seed 3 deg from the answer (a traced path).
+The closed form needs no seed and is exact; the seed only picks among its valid branches.
